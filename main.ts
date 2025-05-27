@@ -1,13 +1,7 @@
-import { ConcreteHouseBuilder } from "./patterns/builder/Builder";
+import { TestAdapterPattern } from "./adapter/adpater";
 
 function main(): void {
-  //   const houseBuilder = new ConcreteHouseBuilder();
-  //   const house = houseBuilder
-  //     .buildSwimmingPool()
-  //     .buildGarage()
-  //     .buildGarden()
-  //     .getResults();
-  //   house.showFeatures();
+  TestAdapterPattern();
 }
 
 main();
