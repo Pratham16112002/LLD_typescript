@@ -53,14 +53,28 @@ export class PaneerPizzaDecorator extends PizzaDecorator {
   }
 }
 
+export class PepperoniPizzaDecorator extends PizzaDecorator {
+  cost() : number {
+    return this.pizza.cost() + 100
+  } 
+  description() : string {
+    return this.pizza.description() + " + pepperonni" 
+  }
+}
+
 export default function TestDecoratorPattern() {
-  let pizza = new BasicPizza();
-  pizza = new CornPizzaDecorator(pizza);
-  pizza = new OnionPizzaDecorator(pizza);
-  pizza = new PaneerPizzaDecorator(pizza);
+  let bpizza = new  BasicPizza();
+
+  const  onionPizza  = new OnionPizzaDecorator(bpizza)
+
+  const onionCheesePizza  = new CornPizzaDecorator(onionPizza)
+
+  const paneerOnionCheese = new PaneerPizzaDecorator(onionCheesePizza)
+
+  const pepperonniPaneerOnionCheesePizza = new PepperoniPizzaDecorator(paneerOnionCheese)
 
   console.log("Final pizza");
   console.log(
-    `Pizza cost : ${pizza.cost()}\n Pizza description : ${pizza.description()}`
+    `Pizza cost : ${pepperonniPaneerOnionCheesePizza.cost()}\n Pizza description : ${pepperonniPaneerOnionCheesePizza.description()}`
   );
 }
